@@ -20,11 +20,16 @@ const config = {
     timeout: Infinity, // the max number of milliseconds to train for --> number greater than 0
   };
 
+
 const lstm = new brain.recurrent.LSTM();
 const result = lstm.train(trainingData, config);
+const json = lstm.toJSON();
+    lstm.fromJSON(json);
+    lstm.maxPredictionLength = 10000;
 console.log('Training result: ', result);
 
-const run1 = lstm.run('I am getting hungry!');
+const run1 = lstm.run('I');
 
 
 console.log(run1);
+
